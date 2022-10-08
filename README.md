@@ -1,7 +1,16 @@
-# -import  requests
-from lxml import etree
-import os
+# 小说爬虫
 
+导入库
+
+```
+ import  requests
+ from lxml import etree
+ import os
+```
+
+创建文件夹
+
+```
 if not os.path.exists(os.getcwd()+"/xiaoshuo"):
     print("小说文件夹不存在，自动创建一个")
     os.mkdir("xiaoshuo")
@@ -10,15 +19,23 @@ if not os.path.exists(os.getcwd()+"/xiaoshuo"):
 else:
     print("小说文件夹存在")
     os.chdir(os.getcwd()+"/xiaoshuo")
-    
-##############################################################   
-#设置请求头（网络，第一个，拉到底找user-agent）
+```
+
+设置请求头（网络，第一个，拉到底找user-agent）
+
+```
 headers={'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Edg/106.0.1370.34'}
+```
 
-##############################################################
-#设置想要爬取小说的目录页链接
+设置想要爬取小说的目录页链接
+
+```
 url='http://www.yjzhy.com/119486/'
+```
 
+爬取函数
+
+```
 #爬取函数
 #设置爬取小说的函数功能
 def get_text(url):
@@ -119,4 +136,4 @@ def get_text(url):
     #             f.write(content)
     #         print(str(title[i]) + "下载成功！")
 get_text(url)
-
+```
