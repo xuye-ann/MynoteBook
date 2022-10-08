@@ -42,7 +42,9 @@ def get_text(url):
     response = requests.get(url, headers=headers)
     ###########################################################
     #最常用的编码方式是utf-8以及gbk，出现乱码可以先尝试这两种
-    response.encoding = 'gbk'
+    geshi='gbk'
+    #geshi='utf-8'
+    response.encoding = geshi
     selector = etree.HTML(response.text)
     #############################################################
     #获取到所有章节的标题和章节链接
@@ -85,9 +87,7 @@ def get_text(url):
 #下载所有章节到一个文件里
     for i in range(0,len(urls)):
         response = requests.get(urls[i], headers=headers)
-        ################################################
-        #最常用的编码方式是utf-8以及gbk，出现乱码可以先尝试这两种
-        response.encoding = 'gbk'
+        response.encoding = geshi
         selector = etree.HTML(response.text)
         ##################################################
         # 获取每一章具体的内容
