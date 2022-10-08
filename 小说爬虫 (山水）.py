@@ -62,22 +62,9 @@ def get_text(url):
         response.encoding = 'gbk'#最常用的编码方式是utf-8以及gbk，出现乱码可以先尝试这两种
         selector = etree.HTML(response.text)
         # 获取每一章具体的内容
-        #/html/body/div[6]/div/div[4]/p/text(),加上/text()
-        # /html/body/div[6]/div/div[4]/p[2]
-        #//*[@id="content"]
-        #//*[@id="content"]/p[4]
         contents = selector.xpath('/html/body/div[6]/div/div[4]/p/text()')
         print("获取第"+str(i+1)+"页内容")
         print(contents)
-
-        # 用空格 来替换&nbsp;
-        #python 导出txt gbK不能识别\xa0(去搜！！）
-
-
-        # #更改content为list类型,得到contentsn方便去除特定字符
-        # contentsn=[]
-        # for i in contents:
-        #     contentsn.append(str(i))
 
         #开始下载这一页面
         f = open("山水又一城.txt", "a", encoding='utf-8')
