@@ -1,0 +1,52 @@
+//用冒泡排序实现4个数的排序
+
+#include<stdio.h>
+#include<malloc.h>
+void maoSort(int R[],int n);
+
+int main()
+{
+	int n=4;//有4个需要排序
+	int *R=(int *)malloc(n*sizeof(int));//动态数组
+	
+	while(scanf("%d",&R[0])!=EOF)
+	{   //输入数据
+	    for(int i=1;i<n;i++)
+	        scanf("%d",&R[i]);
+	    
+	   //冒泡排序
+	   maoSort(R,n);
+	   //输出结果
+	   for(int i=0;i<n;i++)
+	        printf("%d ",R[i]);
+	   free(R);
+	     
+	       
+	}//去掉判断，R[0]有效
+
+	return 0;
+
+	
+}
+
+void maoSort(int R[],int n)
+{
+    int p=0;//是否发生交换
+    int t;
+    for(int i=0;i<n-1;i++)
+    {   p=0;
+        for(int j=0;j<n-i-1;j++)
+        {
+             if(R[j]>R[j+1])
+            {
+                t=R[j];
+                R[j]=R[j+1];
+                R[j+1]=t;
+            
+                p=1;
+             }
+        }
+        if(p==0)
+            break;
+    }
+}
